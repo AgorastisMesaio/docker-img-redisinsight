@@ -1,0 +1,41 @@
+### Docker Compose example
+volumes:
+  redis_data:
+    driver: local
+  redisinsight_data:
+    driver: local
+
+networks:
+  my_network:
+    name: my_network
+    driver: bridge
+
+services:
+  ct_redis:
+    image: ghcr.io/sw-luis-palacios/base-redis:main
+    hostname: redis
+    container_name: ct_redis
+    restart: always
+    ports:
+      - 6379:6379
+    command:
+      sh -c "/init.sh"
+    privileged: true
+    volumes:
+      - redis_data:/data
+    networks:
+      - my_network
+
+  ct_redisinsight:
+    image: ghcr.io/sw-luis-palacios/base-redisinsight:main
+    hostname: redisinsight
+    container_name: ct_redisinsight
+    restart: always
+    ports:
+      - 5540:5540 # Management UI
+    volumes:
+      - redisinsight_data:/data
+    networks:
+      - my_network
+    depends_on:
+      - redis
