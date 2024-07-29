@@ -5,9 +5,12 @@
 #
 FROM redis/redisinsight:latest
 
+# Let's have all the rights
+USER root
+
 # Add sqlite so I can import custom config
-#RUN apk update && apk upgrade
-#RUN apk add --no-cache sqlite
+RUN apk update && apk upgrade
+RUN apk add --no-cache sqlite bash
 
 # Copy custom entrypoint scripts
 ADD entrypoint.sh /entrypoint.sh
