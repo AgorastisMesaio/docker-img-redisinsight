@@ -9,11 +9,13 @@ echo ==============================================
 export CONFIG_ROOT=/config
 CONFIG_ROOT_MOUNT_CHECK=$(mount | grep ${CONFIG_ROOT})
 
+# Let's make sure we are where we need to be
+cd /usr/src/app
+
 # Start custom script run.sh
 if [ -f ${CONFIG_ROOT}/initdb.sql ]; then
-    cp ${CONFIG_ROOT}/initdb.sql /initdb.sql
+    cp ${CONFIG_ROOT}/initdb.sql ./initdb.sql
 
     echo "A custom SQL has been copied"
-
     echo "Add here anything you want to customize your initial SQLite DB"
 fi

@@ -12,19 +12,18 @@ USER root
 RUN apk update && apk upgrade
 RUN apk add --no-cache sqlite bash
 
-# Copy and run custom entrypoint scripts
-ADD custom_entrypoint.sh /custom_entrypoint.sh
-RUN chmod +x /custom_entrypoint.sh
-RUN /custom_entrypoint.sh
-
-# Set the entrypoint
-#ENTRYPOINT ["/custom_entrypoint.sh"]
-
 # Let's do it right !
 WORKDIR /usr/src/app
 USER node
 
+# Copy and run custom entrypoint scripts
+ADD entrypoint.sh /usr/src/app/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+# Set the entrypoint
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+
 # The CMD line represent the Arguments that will be passed to the
-# /entrypoint.sh. We'll use them to indicate the script what
+# entrypoint.sh. We'll use them to indicate the script what
 # command will be executed through our entrypoint when it finishes
 CMD ["./docker-entry.sh" "node" "redisinsight/api/dist/src/main"]
