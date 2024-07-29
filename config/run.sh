@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 echo == EXAMPLE of custom script ==================
 echo Running ./config/run.sh custom script.
@@ -12,6 +12,11 @@ CONFIG_ROOT_MOUNT_CHECK=$(mount | grep ${CONFIG_ROOT})
 # Start custom script run.sh
 if [ -f ${CONFIG_ROOT}/initdb.sql ]; then
     cp ${CONFIG_ROOT}/initdb.sql /initdb.sql
+
+    # Install SQLite
+    apk update && apk upgrade
+    apk add --no-cache sqlite
+
     echo "A custom SQL has been copied"
 
     echo "Add here anything you want to customize your initial SQLite DB"
