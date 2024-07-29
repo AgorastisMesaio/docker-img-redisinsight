@@ -13,7 +13,7 @@ RUN apk update && apk upgrade
 RUN apk add --no-cache sqlite bash
 
 # Copy and run custom entrypoint scripts
-ADD entrypoint.sh /custom_entrypoint.sh
+ADD custom_entrypoint.sh /custom_entrypoint.sh
 RUN chmod +x /custom_entrypoint.sh
 RUN /custom_entrypoint.sh
 
