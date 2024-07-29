@@ -20,8 +20,8 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 # Let's do it right !
+WORKDIR /usr/src/app
 USER node
-WORKDIR "/usr/src/app"
 
 # The CMD line represent the Arguments that will be passed to the
 # /entrypoint.sh. We'll use them to indicate the script what
