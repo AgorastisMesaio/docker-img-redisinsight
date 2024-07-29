@@ -2,7 +2,6 @@
 #
 # entrypoint.sh for Redisinsight
 #
-set -x
 
 # Variables
 export CONFIG_ROOT=/config
@@ -17,8 +16,6 @@ if [ -f ${CONFIG_ROOT}/run.sh ]; then
     chmod +x ./run.sh
     ./run.sh
 fi
-
-pwd
 
 # Run the arguments from CMD in the Dockerfile
 # In our case we are starting nginx by default

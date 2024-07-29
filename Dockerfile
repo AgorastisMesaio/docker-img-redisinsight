@@ -34,4 +34,3 @@ ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 # entrypoint.sh. We'll use them to indicate the script what
 # command will be executed through our entrypoint when it finishes
 CMD ["./docker-entry.sh", "node", "redisinsight/api/dist/src/main"]
-#CMD ["node", "redisinsight/api/dist/src/main"]
