@@ -10,9 +10,15 @@ USER root
 
 # Add sqlite so I can import custom config
 RUN apk update && apk upgrade
-RUN apk add --no-cache sqlite bash
+RUN apk add --no-cache sqlite bash sudo
+
+# Allow the 'node' user to execute sudo commands without a password
+RUN echo 'node ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+# In parallel su must be suid to work properly
+RUN chmod u+s /bin/su
 
 # Copy and run custom entrypoint scripts
+RUN chown 1000:1000 /usr/src/app
 ADD entrypoint.sh /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
 RUN chown 1000:1000 /usr/src/app/entrypoint.sh
