@@ -12,13 +12,14 @@ USER root
 RUN apk update && apk upgrade
 RUN apk add --no-cache sqlite bash
 
-# Let's do it right !
-WORKDIR /usr/src/app
-USER node
-
 # Copy and run custom entrypoint scripts
 ADD entrypoint.sh /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
+RUN chown 1000:1000 /usr/src/app/entrypoint.sh
+
+# Let's do it right !
+WORKDIR /usr/src/app
+USER node
 
 # Set the entrypoint
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
