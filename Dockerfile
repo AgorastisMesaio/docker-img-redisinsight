@@ -19,6 +19,9 @@ RUN chmod +x /entrypoint.sh
 # Set the entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
 
+# Let's do it right !
+USER node
+
 # The CMD line represent the Arguments that will be passed to the
 # /entrypoint.sh. We'll use them to indicate the script what
 # command will be executed through our entrypoint when it finishes
