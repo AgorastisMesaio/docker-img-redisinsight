@@ -18,6 +18,8 @@ if [ -f ${CONFIG_ROOT}/run.sh ]; then
     ./run.sh
 fi
 
+pwd
+
 # Run the arguments from CMD in the Dockerfile
 # In our case we are starting nginx by default
 exec "$@"
