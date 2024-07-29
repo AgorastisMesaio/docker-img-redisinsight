@@ -2,7 +2,7 @@
 #
 # entrypoint.sh for Redisinsight
 #
-set -e
+set -x
 
 # Variables
 export CONFIG_ROOT=/config
