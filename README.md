@@ -1,6 +1,6 @@
 # RedisInsight docker container
 
-![GitHub action workflow status](https://github.com/SW-Luis-Palacios/base-redisinsight/actions/workflows/docker-publish.yml/badge.svg)
+![GitHub action workflow status](https://github.com/AgorastisMesaio/docker-img-redisinsight/actions/workflows/docker-publish.yml/badge.svg)
 
 This repository contains a `Dockerfile` aimed to create a *base image* to provide a dockerized RedisInsight. RedisInsight is a graphical user interface (GUI) tool designed to help developers and database administrators manage and optimize Redis databases. It provides a user-friendly interface to visualize data, monitor performance, and perform various administrative tasks.
 
@@ -45,7 +45,7 @@ networks:
 
 services:
   ct_redis:
-    image: ghcr.io/sw-luis-palacios/base-redis:main
+    image: ghcr.io/agorastismesaio/base-redis:main
     hostname: redis
     container_name: ct_redis
     restart: always
@@ -60,7 +60,7 @@ services:
       - my_network
 
   ct_redisinsight:
-    image: ghcr.io/sw-luis-palacios/base-redisinsight:main
+    image: ghcr.io/agorastismesaio/docker-img-redisinsight:main
     hostname: redisinsight
     container_name: ct_redisinsight
     restart: always
@@ -98,11 +98,11 @@ If you copy or fork this project to create your own base image.
 To build the Docker image, run the following command in the directory containing the Dockerfile:
 
 ```sh
-docker build -t your-image/base-redisinsight:main .
+docker build -t your-image/docker-img-redisinsight:main .
 ```
 
 ### Troubleshoot
 
 ```sh
-docker run --rm --name ct_redisinsight --hostname redisinsight -p 6379:6379 your-image/base-redisinsight:main
+docker run --rm --name ct_redisinsight --hostname redisinsight -p 6379:6379 your-image/docker-img-redisinsight:main
 ```

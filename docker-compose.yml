@@ -12,7 +12,7 @@ networks:
 
 services:
   ct_redis:
-    image: ghcr.io/sw-luis-palacios/base-redis:main
+    image: ghcr.io/agorastismesaio/base-redis:main
     hostname: redis
     container_name: ct_redis
     restart: always
@@ -27,7 +27,7 @@ services:
       - my_network
 
   ct_redisinsight:
-    image: ghcr.io/sw-luis-palacios/base-redisinsight:main
+    image: ghcr.io/agorastismesaio/docker-img-redisinsight:main
     hostname: redisinsight
     container_name: ct_redisinsight
     restart: always
