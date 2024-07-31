@@ -12,7 +12,7 @@ networks:
 
 services:
   ct_redis:
-    image: ghcr.io/agorastismesaio/base-redis:main
+    image: ghcr.io/agorastismesaio/docker-img-redis:main
     hostname: redis
     container_name: ct_redis
     restart: always
