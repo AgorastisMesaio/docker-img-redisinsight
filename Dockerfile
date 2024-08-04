@@ -10,7 +10,7 @@ USER root
 
 # Add sqlite so I can import custom config
 RUN apk update && apk upgrade
-RUN apk add --no-cache sqlite bash sudo
+RUN apk add --no-cache sqlite bash sudo curl procps
 
 # Allow the 'node' user to execute sudo commands without a password
 RUN echo 'node ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
